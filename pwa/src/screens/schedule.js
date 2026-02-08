@@ -6,12 +6,12 @@
 import { getActiveTeam } from '../data/mock-teams.js';
 
 export function renderScheduleScreen(path) {
-    const content = document.getElementById('app-content');
-    const today = new Date();
-    const currentMonth = today.toLocaleString('en-US', { month: 'short', year: 'numeric' });
-    const currentDate = today.toLocaleString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+  const content = document.getElementById('app');
+  const today = new Date();
+  const currentMonth = today.toLocaleString('en-US', { month: 'short', year: 'numeric' });
+  const currentDate = today.toLocaleString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
 
-    content.innerHTML = `
+  content.innerHTML = `
     <div class="page-header">
       <div style="width: 44px;"></div>
       <h1 class="page-header__title">Schedule</h1>
@@ -43,22 +43,22 @@ export function renderScheduleScreen(path) {
 }
 
 function renderWeekCalendar(today) {
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const startOfWeek = new Date(today);
-    startOfWeek.setDate(today.getDate() - today.getDay());
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const startOfWeek = new Date(today);
+  startOfWeek.setDate(today.getDate() - today.getDay());
 
-    const week = Array.from({ length: 7 }, (_, i) => {
-        const date = new Date(startOfWeek);
-        date.setDate(startOfWeek.getDate() + i);
-        return date;
-    });
+  const week = Array.from({ length: 7 }, (_, i) => {
+    const date = new Date(startOfWeek);
+    date.setDate(startOfWeek.getDate() + i);
+    return date;
+  });
 
-    return `
+  return `
     <div class="card mb-6">
       <div class="grid grid--7" style="gap: 0; text-align: center;">
         ${week.map((date, i) => {
-        const isToday = date.toDateString() === today.toDateString();
-        return `
+    const isToday = date.toDateString() === today.toDateString();
+    return `
             <div style="padding: var(--space-3); border-right: ${i < 6 ? '1px solid var(--border-muted)' : 'none'};">
               <div class="text-xs text-secondary mb-2">${days[i]}</div>
               <div class="weight-semibold ${isToday ? 'text-accent-primary' : ''}" style="${isToday ? 'width: 32px; height: 32px; margin: 0 auto; background: var(--accent-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;' : ''}">
@@ -66,7 +66,7 @@ function renderWeekCalendar(today) {
               </div>
             </div>
           `;
-    }).join('')}
+  }).join('')}
       </div>
     </div>
   `;

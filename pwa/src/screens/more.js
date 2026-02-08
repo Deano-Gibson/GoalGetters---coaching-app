@@ -4,7 +4,7 @@
  */
 
 export function renderMoreScreen(path) {
-  const content = document.getElementById('app-content');
+  const content = document.getElementById('app');
 
   content.innerHTML = `
     <div class="page-header">

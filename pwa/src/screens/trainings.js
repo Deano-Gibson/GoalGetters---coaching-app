@@ -6,9 +6,9 @@
 import { getActiveTeam } from '../data/mock-teams.js';
 
 export function renderTrainingsScreen(path) {
-    const content = document.getElementById('app-content');
+  const content = document.getElementById('app');
 
-    content.innerHTML = `
+  content.innerHTML = `
     <div class="page-header">
       <div style="width: 44px;"></div>
       <h1 class="page-header__title">Trainings</h1>

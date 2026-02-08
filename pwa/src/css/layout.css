@@ -1,382 +1,195 @@
 /* ===================================
-   App Layout Structure
+   Layout System - Sophisticated
    =================================== */
 
-#app {
+.app-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    max-width: 100vw;
     position: relative;
 }
 
-/* ===================================
-   Main Content Area
-   =================================== */
-
 .app-content {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 70px;
-    /* Space for bottom navigation */
-    overflow-y: auto;
-    overflow-x: hidden;
+    padding-bottom: calc(var(--bottom-nav-height) + var(--space-8));
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
-/* Desktop: adjust for side navigation */
-@media (min-width: 1024px) {
-    .app-content {
-        padding-bottom: 0;
-        padding-left: 240px;
-        /* Space for side navigation */
-    }
+/* Page Structure */
+.page {
+    animation: fade-in 0.3s var(--ease-smooth);
 }
-
-/* ===================================
-   Page Header
-   =================================== */
 
 .page-header {
     position: sticky;
     top: 0;
     z-index: var(--z-sticky);
-    background-color: var(--bg-primary);
-    border-bottom: 1px solid var(--border-muted);
-    padding: var(--space-3) var(--space-4);
+    background-color: var(--bg-translucent);
+    /* Solid but slightly transparent */
+    backdrop-filter: blur(12px);
+    /* Subtle blur behind solid color */
+    border-bottom: 1px solid var(--border-subtle);
+    padding: var(--space-4);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 56px;
-}
-
-.page-header__back {
-    width: var(--touch-target-min);
-    height: var(--touch-target-min);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-secondary);
-    border-radius: var(--radius-md);
-    transition: background-color var(--transition-fast);
-}
-
-.page-header__back:hover {
-    background-color: var(--surface-hover);
+    height: var(--header-height);
+    transition: transform 0.3s ease;
 }
 
 .page-header__title {
     font-size: var(--text-lg);
-    font-weight: var(--weight-semibold);
-    flex: 1;
+    font-weight: var(--weight-bold);
     text-align: center;
-    padding: 0 var(--space-2);
-}
-
-.page-header__actions {
-    display: flex;
-    gap: var(--space-2);
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .page-header__action {
-    width: var(--touch-target-min);
-    height: var(--touch-target-min);
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-secondary);
-    border-radius: var(--radius-md);
-    transition: background-color var(--transition-fast);
+    border-radius: var(--radius-full);
+    color: var(--accent-primary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
-.page-header__action:hover {
-    background-color: var(--surface-hover);
+.page-header__action:active {
+    background-color: var(--bg-surface);
 }
-
-/* ===================================
-   Page Body
-   =================================== */
 
 .page-body {
-    flex: 1;
     padding: var(--space-4);
-}
-
-/* Desktop: wider padding */
-@media (min-width: 1024px) {
-    .page-body {
-        padding: var(--space-8);
-        max-width: 1400px;
-        margin: 0 auto;
-        width: 100%;
-    }
-}
-
-/* ===================================
-   Container Utilities
-   =================================== */
-
-.container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 var(--space-4);
-}
-
-.container--narrow {
-    max-width: 640px;
-}
-
-.container--medium {
-    max-width: 900px;
-}
-
-.container--wide {
-    max-width: 1200px;
-}
-
-/* ===================================
-   Section Utilities
-   =================================== */
-
-.section {
-    margin-bottom: var(--space-8);
-}
-
-.section__header {
-    margin-bottom: var(--space-4);
-}
-
-.section__title {
-    font-size: var(--text-lg);
-    font-weight: var(--weight-semibold);
-    color: var(--text-primary);
-    margin-bottom: var(--space-1);
-}
-
-.section__subtitle {
-    font-size: var(--text-sm);
-    color: var(--text-secondary);
-}
-
-/* ===================================
-   Grid Layouts
-   =================================== */
-
-.grid {
-    display: grid;
-    gap: var(--space-4);
-}
-
-.grid--2 {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.grid--3 {
-    grid-template-columns: repeat(3, 1fr);
-}
-
-@media (min-width: 768px) {
-    .grid--tablet-2 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .grid--tablet-3 {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (min-width: 1024px) {
-    .grid--desktop-2 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .grid--desktop-3 {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .grid--desktop-4 {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-/* ===================================
-   Flex Utilities
-   =================================== */
-
-.flex {
     display: flex;
-}
-
-.flex--column {
     flex-direction: column;
-}
-
-.flex--center {
-    align-items: center;
-    justify-content: center;
-}
-
-.flex--between {
-    justify-content: space-between;
-}
-
-.flex--gap-1 {
-    gap: var(--space-1);
-}
-
-.flex--gap-2 {
-    gap: var(--space-2);
-}
-
-.flex--gap-3 {
-    gap: var(--space-3);
-}
-
-.flex--gap-4 {
     gap: var(--space-4);
 }
 
-/* ===================================
-   Spacing Utilities
-   =================================== */
-
-.mb-1 {
-    margin-bottom: var(--space-1);
-}
-
-.mb-2 {
-    margin-bottom: var(--space-2);
-}
-
-.mb-3 {
-    margin-bottom: var(--space-3);
-}
-
-.mb-4 {
-    margin-bottom: var(--space-4);
-}
-
-.mb-6 {
+/* Section Containers */
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
     margin-bottom: var(--space-6);
 }
 
-.mb-8 {
-    margin-bottom: var(--space-8);
-}
-
-.mt-1 {
-    margin-top: var(--space-1);
-}
-
-.mt-2 {
-    margin-top: var(--space-2);
-}
-
-.mt-3 {
-    margin-top: var(--space-3);
-}
-
-.mt-4 {
-    margin-top: var(--space-4);
-}
-
-.mt-6 {
-    margin-top: var(--space-6);
-}
-
-.mt-8 {
-    margin-top: var(--space-8);
-}
-
-/* ===================================
-   Text Utilities
-   =================================== */
-
-.text-xs {
-    font-size: var(--text-xs);
-}
-
-.text-sm {
+.section__title {
     font-size: var(--text-sm);
-}
-
-.text-base {
-    font-size: var(--text-base);
-}
-
-.text-lg {
-    font-size: var(--text-lg);
-}
-
-.text-xl {
-    font-size: var(--text-xl);
-}
-
-.text-2xl {
-    font-size: var(--text-2xl);
-}
-
-.text-center {
-    text-align: center;
-}
-
-.text-left {
-    text-align: left;
-}
-
-.text-right {
-    text-align: right;
-}
-
-.text-primary {
-    color: var(--text-primary);
-}
-
-.text-secondary {
-    color: var(--text-secondary);
-}
-
-.text-tertiary {
-    color: var(--text-tertiary);
-}
-
-.weight-regular {
-    font-weight: var(--weight-regular);
-}
-
-.weight-medium {
-    font-weight: var(--weight-medium);
-}
-
-.weight-semibold {
     font-weight: var(--weight-semibold);
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-left: var(--space-1);
 }
 
-.weight-bold {
-    font-weight: var(--weight-bold);
-}
-
-/* ===================================
-   Visibility Utilities
-   =================================== */
-
-.hidden {
-    display: none !important;
-}
-
-@media (max-width: 767px) {
-    .hidden-mobile {
-        display: none !important;
+/* Desktop / Tablet Layouts */
+@media (min-width: 768px) {
+    .app-container {
+        flex-direction: row;
     }
-}
 
-@media (min-width: 768px) and (max-width: 1023px) {
-    .hidden-tablet {
-        display: none !important;
+    .app-content {
+        padding-bottom: var(--space-8);
+        margin-left: var(--sidebar-width);
+        /* Push content for sidebar */
+        max-width: calc(100vw - var(--sidebar-width));
+    }
+
+    .page-body {
+        padding: var(--space-6);
+        max-width: 1200px;
+        margin: 0 auto;
     }
 }
 
 @media (min-width: 1024px) {
-    .hidden-desktop {
+    .app-content {
+        margin-left: var(--sidebar-width);
+        max-width: calc(100vw - var(--sidebar-width));
+        padding: var(--space-6);
+        /* Add padding for desktop */
+    }
+
+    .layout-split {
+        display: grid;
+        grid-template-columns: 380px 1fr;
+        /* Fixed width list, fluid detail */
+        gap: var(--space-6);
+        height: calc(100vh - var(--space-12));
+        /* Full height minus padding */
+        overflow: hidden;
+    }
+
+    /* In split view, both panes are visible */
+    .pane-master,
+    .pane-detail {
+        display: block !important;
+        height: 100%;
+        overflow-y: auto;
+        /* Style scrollbars for panes */
+        scrollbar-width: thin;
+        scrollbar-color: var(--border-light) transparent;
+    }
+}
+
+/* Mobile/Tablet default (Stacked/Single view) */
+@media (max-width: 1023px) {
+    .layout-split {
+        display: block;
+        height: auto;
+    }
+
+    /* Visibility classes controlled by JS/Route */
+    .show-master .pane-detail {
+        display: none;
+    }
+
+    .show-detail .pane-master {
+        display: none;
+    }
+
+    /* On mobile, hidden pane should be truly hidden */
+    .pane-master,
+    .pane-detail {
+        min-height: 100vh;
+    }
+
+    .hide-on-mobile {
         display: none !important;
+    }
+}
+
+.layout-split__master {
+    overflow-y: auto;
+    border-right: 1px solid var(--border-subtle);
+    padding-right: var(--space-4);
+}
+
+.layout-split__detail {
+    overflow-y: auto;
+    padding-left: var(--space-2);
+}
+
+
+/* Animations */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

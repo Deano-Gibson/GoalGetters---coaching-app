@@ -1,101 +1,79 @@
-/**
- * Mock Match Data
- */
-
 export const matches = [
     {
         id: 1,
-        teamId: 1,
-        opponentName: "Temp",
-        homeTeamScore: null,
-        awayTeamScore: null,
-        venue: "Home",
-        city: "Germiston City Sports Ground",
-        date: "2026-02-08T14:07",
-        season: "2025/2026",
-        competition: "League",
-        matchType: "Friendly",
-        status: "upcoming"
+        opponent: 'Hollywood Bets',
+        logo: '🦌',
+        date: '2023-11-12',
+        time: '14:00',
+        venue: 'Home',
+        status: 'Upcoming',
+        score: null,
+        competition: 'League Match',
+        events: []
     },
     {
         id: 2,
-        teamId: 1,
-        opponentName: "Walk's Royal FC",
-        homeTeamScore: 1,
-        awayTeamScore: 0,
-        venue: "Away",
-        city: "Royal Stadium",
-        date: "2026-02-07T15:00",
-        season: "2025/2026",
-        competition: "League",
-        matchType: "League",
-        status: "past"
+        opponent: 'Super League',
+        logo: '⚡',
+        date: '2023-11-05',
+        time: '15:30',
+        venue: 'Away',
+        status: 'Finished',
+        score: { us: 3, them: 1 },
+        result: 'win',
+        competition: 'Cup Semi-Final',
+        events: [
+            { id: 1, type: 'goal', team: 'us', player: 'J. Silva', minute: 12, detail: 'Header from corner' },
+            { id: 2, type: 'card', cardType: 'yellow', team: 'them', player: 'Opponent #4', minute: 34, detail: 'Foul' },
+            { id: 3, type: 'goal', team: 'us', player: 'M. Johnson', minute: 45, detail: 'Penalty' },
+            { id: 4, type: 'sub', team: 'us', playerIn: 'D. Wilson', playerOut: 'T. Brown', minute: 60 },
+            { id: 5, type: 'goal', team: 'them', player: 'Striker', minute: 78, detail: 'Counter attack' },
+            { id: 6, type: 'goal', team: 'us', player: 'K. Ndlovu', minute: 88, detail: 'Long range' }
+        ]
     },
     {
         id: 3,
-        teamId: 1,
-        opponentName: "Vrrphaa Nation FC",
-        homeTeamScore: 1,
-        awayTeamScore: 1,
-        venue: "Home",
-        city: "Germiston City Sports Ground",
-        date: "2026-02-04T19:30",
-        season: "2025/2026",
-        competition: "League",
-        matchType: "League",
-        status: "past"
+        opponent: 'Reserves',
+        logo: '🛡️',
+        date: '2023-10-29',
+        time: '10:00',
+        venue: 'Home',
+        status: 'Finished',
+        score: { us: 1, them: 1 },
+        result: 'draw',
+        competition: 'Friendly',
+        events: [
+            { id: 1, type: 'goal', team: 'them', player: 'Winger', minute: 15 },
+            { id: 2, type: 'goal', team: 'us', player: 'J. Silva', minute: 82 }
+        ]
     },
     {
         id: 4,
-        teamId: 1,
-        opponentName: "Alberton FC",
-        homeTeamScore: 1,
-        awayTeamScore: 0,
-        venue: "Home",
-        city: "Germiston City Sports Ground",
-        date: "2026-01-25T12:00",
-        season: "2025/2026",
-        competition: "League",
-        matchType: "League",
-        status: "past"
+        opponent: 'Academy U19',
+        logo: '🎓',
+        date: '2023-10-22',
+        time: '09:00',
+        venue: 'Away',
+        status: 'Finished',
+        score: { us: 0, them: 2 },
+        result: 'loss',
+        competition: 'League Match',
+        events: [
+            { id: 1, type: 'goal', team: 'them', player: 'Forward', minute: 22 },
+            { id: 2, type: 'card', cardType: 'red', team: 'us', player: 'M. Johnson', minute: 40, detail: 'Professional foul' },
+            { id: 3, type: 'goal', team: 'them', player: 'Midfielder', minute: 67 }
+        ]
     },
     {
         id: 5,
-        teamId: 1,
-        opponentName: "Benoni Northerns FC",
-        homeTeamScore: 3,
-        awayTeamScore: 1,
-        venue: "Home",
-        city: "Germiston City Sports Ground",
-        date: "2026-01-23T19:30",
-        season: "2025/2026",
-        competition: "League",
-        matchType: "League",
-        status: "past"
+        opponent: 'City Rivals',
+        logo: '🏙️',
+        date: '2023-12-03',
+        time: '16:00',
+        venue: 'Away',
+        status: 'Upcoming',
+        score: null,
+        competition: 'League Match',
+        events: []
     }
 ];
-
-export function getMatchesByTeam(teamId) {
-    return matches.filter(m => m.teamId === teamId);
-}
-
-export function getMatchById(id) {
-    return matches.find(m => m.id === parseInt(id));
-}
-
-export function getUpcomingMatches(teamId) {
-    return matches.filter(m => m.teamId === teamId && m.status === 'upcoming');
-}
-
-export function getPastMatches(teamId) {
-    return matches.filter(m => m.teamId === teamId && m.status === 'past');
-}
-
-export function addMatch(matchData) {
-    const newMatch = {
-        id: matches.length + 1,
-        ...matchData
-    };
-    matches.push(newMatch);
-    return newMatch;
-}

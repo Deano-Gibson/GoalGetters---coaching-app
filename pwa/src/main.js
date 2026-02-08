@@ -21,13 +21,12 @@ if ('serviceWorker' in navigator) {
 
 // Initialize the application
 function init() {
-    const app = document.getElementById('app');
-
-    // Create app structure
-    app.innerHTML = `
-    <div class="app-content" id="app-content"></div>
-    <nav class="bottom-nav" id="bottom-nav"></nav>
-  `;
+    // App structure is defined in index.html
+    // <div class="app-container">
+    //   <aside id="sidebar"></aside>
+    //   <main id="app"></main>
+    //   <nav id="bottom-nav"></nav>
+    // </div>
 
     // Render initial navigation
     renderNavigation();
