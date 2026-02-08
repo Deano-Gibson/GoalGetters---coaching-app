@@ -2,13 +2,15 @@
  * Mock Team Data
  */
 
+const STORAGE_KEY = 'goal_getters_active_team_id';
+
 export const teams = [
     {
         id: 1,
         name: "Goal Getters Hollywood Bets",
         shortName: "GGHB",
         logo: null,
-        active: true
+        active: false
     },
     {
         id: 2,
@@ -55,9 +57,26 @@ export const teams = [
 ];
 
 export function getActiveTeam() {
+    try {
+        const savedId = localStorage.getItem(STORAGE_KEY);
+        if (savedId) {
+            const id = parseInt(savedId);
+            const team = teams.find(t => t.id === id);
+            if (team) return team;
+        }
+    } catch (e) {
+        console.warn('Failed to load active team from localStorage', e);
+    }
+
+    // Fallback to active flag or first team
     return teams.find(t => t.active) || teams[0];
 }
 
 export function setActiveTeam(teamId) {
+    try {
+        localStorage.setItem(STORAGE_KEY, teamId.toString());
+    } catch (e) {
+        console.warn('Failed to save active team to localStorage', e);
+    }
     teams.forEach(t => t.active = (t.id === teamId));
 }

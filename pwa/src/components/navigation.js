@@ -87,7 +87,12 @@ function renderSidebar() {
     document.getElementById('team-switcher')?.addEventListener('change', (e) => {
         const newTeamId = parseInt(e.target.value);
         setActiveTeam(newTeamId);
-        window.location.reload(); // Simple reload to refresh all data with new team
+
+        // Smoothly re-render UI instead of full reload (failsafe for SW issues)
+        renderNavigation();
+        router.handleRoute();
+
+        console.log('Active team changed to:', newTeamId);
     });
 }
 

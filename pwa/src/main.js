@@ -6,17 +6,27 @@
 import { router } from './router.js';
 import { renderNavigation } from './components/navigation.js';
 
-// Register Service Worker for PWA support
+// Register Service Worker for PWA support (Disabled in development/localhost)
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then((registration) => {
-                console.log('ServiceWorker registered:', registration.scope);
-            })
-            .catch((error) => {
-                console.log('ServiceWorker registration failed:', error);
-            });
-    });
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        // Unregister any existing service worker on localhost to prevent dev caching issues
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+            for (let registration of registrations) {
+                registration.unregister();
+                console.log('Service Worker unregistered for development');
+            }
+        });
+    } else {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then((registration) => {
+                    console.log('ServiceWorker registered:', registration.scope);
+                })
+                .catch((error) => {
+                    console.log('ServiceWorker registration failed:', error);
+                });
+        });
+    }
 }
 
 // Initialize the application
