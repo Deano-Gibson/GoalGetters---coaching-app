@@ -59,11 +59,20 @@ See `implementation_plan.md` for ideas:
 **Screens:** `src/screens/*.js` - Add features to each screen  
 **Mock Data:** `src/data/*.js` - Add more data  
 
-### Build for Production
-```bash
-npm run build
-```
-Deploy the `dist/` folder to any static host (Netlify, Vercel, GitHub Pages, etc.)
+### Deployment to GitHub Pages
+
+1. **GitHub Pages (Automatic)**:
+   - Push your code to GitHub.
+   - The included GitHub Action in `.github/workflows/deploy.yml` will automatically build and deploy the app.
+   - Go to your repo **Settings** > **Pages** and ensure "Build and deployment" is set to "GitHub Actions".
+
+2. **Manual Deployment**:
+   ```bash
+   cd pwa
+   npm run build
+   npm run deploy
+   ```
+   *Note: Requires `gh-pages` package to be installed.*
 
 ---
 
