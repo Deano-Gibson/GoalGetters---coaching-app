@@ -23,6 +23,16 @@ npm run preview
 
 The app will be available at `http://localhost:5173/` (or the next available port).
 
+## 🛠️ Repository Structure
+
+This project follows a structured branching model:
+- **`main`**: The latest stable, production-ready version.
+- **`staging`**: The integration branch for new features and bug fixes.
+- **`UI-template`**: A static reference branch containing the core UI foundation.
+- **`gh-pages`**: The deployment branch for the live PWA demo.
+
+---
+
 ## 📱 Features
 
 ### Implemented Screens

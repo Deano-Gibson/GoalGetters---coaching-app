@@ -73,6 +73,33 @@ See `implementation_plan.md` for ideas:
    ```
    *Note: I've already installed the necessary tools. This script will build the app and push the `dist/` folder to the `gh-pages` branch.*
 
+### Git Branching Strategy
+
+Our repository uses a structure built for long-term maintenance:
+
+1. **`main`**: Production-ready live app.
+2. **`staging`**: Primary development branch. Merge features here first.
+3. **`UI-template`**: A frozen snapshot of the core UI framework.
+4. **`gh-pages`**: Automatic hosting for the mock website.
+
+**Workflow for new features:**
+```bash
+# 1. Start from staging
+git checkout staging
+git pull origin staging
+
+# 2. Create a feature branch
+git checkout -b feature/your-feature-name
+
+# 3. Work and commit
+git add .
+git commit -m "feat: described change"
+
+# 4. Merge back to staging
+git checkout staging
+git merge feature/your-feature-name
+```
+
 ---
 
-**🎉 Your PWA is live! Push to GitHub to see it in action.**
+**🎉 Your project is organized and ready for development!**
