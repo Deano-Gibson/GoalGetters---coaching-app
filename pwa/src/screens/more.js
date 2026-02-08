@@ -4,9 +4,9 @@
  */
 
 export function renderMoreScreen(path) {
-    const content = document.getElementById('app-content');
+  const content = document.getElementById('app-content');
 
-    content.innerHTML = `
+  content.innerHTML = `
     <div class="page-header">
       <div style="width: 44px;"></div>
       <h1 class="page-header__title">More</h1>
@@ -53,8 +53,8 @@ export function renderMoreScreen(path) {
       <div class="section">
         <h2 class="section__title text-secondary">Other</h2>
         <div class="card" style="padding: 0;">
-          ${renderMenuItem('💻', 'Smart Coach++ for Mac')}
-          ${renderMenuItem('📱', 'Smart Coach++ for Android')}
+          ${renderMenuItem('💻', 'Goal Getters Coaching App for Mac')}
+          ${renderMenuItem('📱', 'Goal Getters Coaching App for Android')}
           ${renderMenuItem('📄', 'Terms of Use')}
           ${renderFollowUs()}
           ${renderMenuItem('⭐', 'Rate This App')}
@@ -66,7 +66,7 @@ export function renderMoreScreen(path) {
 }
 
 function renderMenuItem(icon, label) {
-    return `
+  return `
     <div class="list-item list-item--clickable">
       <span style="font-size: 20px;">${icon}</span>
       <div class="list-item__content">
@@ -78,7 +78,7 @@ function renderMenuItem(icon, label) {
 }
 
 function renderFollowUs() {
-    return `
+  return `
     <div class="list-item">
       <span style="font-size: 20px;">❤️</span>
       <div class="list-item__content">

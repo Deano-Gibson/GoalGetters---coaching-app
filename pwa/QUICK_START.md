@@ -64,16 +64,15 @@ See `implementation_plan.md` for ideas:
 1. **GitHub Pages (Automatic)**:
    - Push your code to GitHub.
    - The included GitHub Action in `.github/workflows/deploy.yml` will automatically build and deploy the app.
-   - Go to your repo **Settings** > **Pages** and ensure "Build and deployment" is set to "GitHub Actions".
+   - Go to your repo **Settings** > **Pages` and ensure "Build and deployment" > "Source" is set to "**GitHub Actions**".
 
 2. **Manual Deployment**:
    ```bash
    cd pwa
-   npm run build
    npm run deploy
    ```
-   *Note: Requires `gh-pages` package to be installed.*
+   *Note: I've already installed the necessary tools. This script will build the app and push the `dist/` folder to the `gh-pages` branch.*
 
 ---
 
-**🎉 Your PWA is ready! Open it at http://localhost:5173**
+**🎉 Your PWA is live! Push to GitHub to see it in action.**
