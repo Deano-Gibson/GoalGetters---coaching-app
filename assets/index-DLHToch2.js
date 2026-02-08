@@ -13,7 +13,7 @@
       ${x()}
       ${$(s)}
     </div>
-  `,I()}function x(){return""}function $(e){return Object.entries(e).filter(([t,a])=>a.length>0).map(([t,a])=>`
+  `,G()}function x(){return""}function $(e){return Object.entries(e).filter(([t,a])=>a.length>0).map(([t,a])=>`
       <div class="section">
         <h2 class="section__title text-secondary">${t}</h2>
         <div class="card" style="padding: 0;">
@@ -127,7 +127,7 @@
           </div>
         `}).join("")}
     </div>
-  `).join("")}function I(){document.querySelectorAll("[data-player-id]").forEach(t=>{t.addEventListener("click",()=>{const a=t.dataset.playerId;window.location.hash=`#/squad/player/${a}`})});const e=document.getElementById("add-player-btn");e&&e.addEventListener("click",()=>{alert("Add player form would open here")})}const l=[{id:1,teamId:1,opponentName:"Temp",homeTeamScore:null,awayTeamScore:null,venue:"Home",city:"Germiston City Sports Ground",date:"2026-02-08T14:07",season:"2025/2026",competition:"League",matchType:"Friendly",status:"upcoming"},{id:2,teamId:1,opponentName:"Walk's Royal FC",homeTeamScore:1,awayTeamScore:0,venue:"Away",city:"Royal Stadium",date:"2026-02-07T15:00",season:"2025/2026",competition:"League",matchType:"League",status:"past"},{id:3,teamId:1,opponentName:"Vrrphaa Nation FC",homeTeamScore:1,awayTeamScore:1,venue:"Home",city:"Germiston City Sports Ground",date:"2026-02-04T19:30",season:"2025/2026",competition:"League",matchType:"League",status:"past"},{id:4,teamId:1,opponentName:"Alberton FC",homeTeamScore:1,awayTeamScore:0,venue:"Home",city:"Germiston City Sports Ground",date:"2026-01-25T12:00",season:"2025/2026",competition:"League",matchType:"League",status:"past"},{id:5,teamId:1,opponentName:"Benoni Northerns FC",homeTeamScore:3,awayTeamScore:1,venue:"Home",city:"Germiston City Sports Ground",date:"2026-01-23T19:30",season:"2025/2026",competition:"League",matchType:"League",status:"past"}];function N(e){return l.filter(t=>t.teamId===e)}function P(e){return l.filter(t=>t.teamId===e&&t.status==="upcoming")}function G(e){return l.filter(t=>t.teamId===e&&t.status==="past")}function M(e){const t=document.getElementById("app-content"),a=r();N(a.id),t.innerHTML=`
+  `).join("")}function G(){document.querySelectorAll("[data-player-id]").forEach(t=>{t.addEventListener("click",()=>{const a=t.dataset.playerId;window.location.hash=`#/squad/player/${a}`})});const e=document.getElementById("add-player-btn");e&&e.addEventListener("click",()=>{alert("Add player form would open here")})}const l=[{id:1,teamId:1,opponentName:"Temp",homeTeamScore:null,awayTeamScore:null,venue:"Home",city:"Germiston City Sports Ground",date:"2026-02-08T14:07",season:"2025/2026",competition:"League",matchType:"Friendly",status:"upcoming"},{id:2,teamId:1,opponentName:"Walk's Royal FC",homeTeamScore:1,awayTeamScore:0,venue:"Away",city:"Royal Stadium",date:"2026-02-07T15:00",season:"2025/2026",competition:"League",matchType:"League",status:"past"},{id:3,teamId:1,opponentName:"Vrrphaa Nation FC",homeTeamScore:1,awayTeamScore:1,venue:"Home",city:"Germiston City Sports Ground",date:"2026-02-04T19:30",season:"2025/2026",competition:"League",matchType:"League",status:"past"},{id:4,teamId:1,opponentName:"Alberton FC",homeTeamScore:1,awayTeamScore:0,venue:"Home",city:"Germiston City Sports Ground",date:"2026-01-25T12:00",season:"2025/2026",competition:"League",matchType:"League",status:"past"},{id:5,teamId:1,opponentName:"Benoni Northerns FC",homeTeamScore:3,awayTeamScore:1,venue:"Home",city:"Germiston City Sports Ground",date:"2026-01-23T19:30",season:"2025/2026",competition:"League",matchType:"League",status:"past"}];function I(e){return l.filter(t=>t.teamId===e)}function N(e){return l.filter(t=>t.teamId===e&&t.status==="upcoming")}function P(e){return l.filter(t=>t.teamId===e&&t.status==="past")}function A(e){const t=document.getElementById("app-content"),a=r();I(a.id),t.innerHTML=`
     <div class="page-header">
       <div style="width: 44px;"></div>
       <h1 class="page-header__title">Matches</h1>
@@ -155,10 +155,10 @@
         </div>
         
         <h2 class="section__title">Upcoming</h2>
-        ${v(P(a.id))}
+        ${v(N(a.id))}
         
         <h2 class="section__title mt-6">Past</h2>
-        ${v(G(a.id))}
+        ${v(P(a.id))}
       </div>
     </div>
   `,document.getElementById("add-match-btn")?.addEventListener("click",()=>{alert("Add match form would open here")}),document.getElementById("filter-btn")?.addEventListener("click",()=>{alert("Filter options would open here")})}function v(e){return e.length===0?`
@@ -167,9 +167,9 @@
       </div>
     `:`
     <div class="card" style="padding: 0;">
-      ${e.map(t=>A(t)).join("")}
+      ${e.map(t=>M(t)).join("")}
     </div>
-  `}function A(e){const t=e.venue==="Home",a=t?r().shortName:e.opponentName,s=t?e.opponentName:r().shortName,i=e.homeTeamScore!==null?`${e.homeTeamScore} : ${e.awayTeamScore}`:"– : –",n=B(e,t),o=new Date(e.date).toLocaleString("en-GB",{day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"});return`
+  `}function M(e){const t=e.venue==="Home",a=t?r().shortName:e.opponentName,s=t?e.opponentName:r().shortName,i=e.homeTeamScore!==null?`${e.homeTeamScore} : ${e.awayTeamScore}`:"– : –",n=B(e,t),o=new Date(e.date).toLocaleString("en-GB",{day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"});return`
     <div class="list-item list-item--clickable" data-match-id="${e.id}">
       <div class="list-item__content">
         <div class="list-item__title">${a} vs ${s}</div>
@@ -301,8 +301,8 @@
       <div class="section">
         <h2 class="section__title text-secondary">Other</h2>
         <div class="card" style="padding: 0;">
-          ${c("💻","Smart Coach++ for Mac")}
-          ${c("📱","Smart Coach++ for Android")}
+          ${c("💻","Goal Getters Coaching App for Mac")}
+          ${c("📱","Goal Getters Coaching App for Android")}
           ${c("📄","Terms of Use")}
           ${D()}
           ${c("⭐","Rate This App")}
@@ -333,7 +333,7 @@
         </button>
       </div>
     </div>
-  `}const j={"/squad":w,"/matches":M,"/trainings":F,"/schedule":k,"/more":R};class W{constructor(){this.currentRoute=null}init(){this.handleRoute()}getPath(){return window.location.hash.slice(1)||"/squad"}handleRoute(){const t=this.getPath(),a="/"+t.split("/")[1];this.currentRoute=a;const s=j[a];s?s(t):window.location.hash="#/squad"}navigate(t){window.location.hash=`#${t}`}getCurrentRoute(){return this.currentRoute}}const d=new W,U=[{id:"squad",label:"Squad",icon:"👥",route:"/squad"},{id:"matches",label:"Matches",icon:"⚽",route:"/matches"},{id:"trainings",label:"Trainings",icon:"🏃",route:"/trainings"},{id:"schedule",label:"Schedule",icon:"📅",route:"/schedule"},{id:"more",label:"More",icon:"☰",route:"/more"}];function q(){const e=document.getElementById("bottom-nav");e.innerHTML=U.map(t=>`
+  `}const j={"/squad":w,"/matches":A,"/trainings":F,"/schedule":k,"/more":R};class W{constructor(){this.currentRoute=null}init(){this.handleRoute()}getPath(){return window.location.hash.slice(1)||"/squad"}handleRoute(){const t=this.getPath(),a="/"+t.split("/")[1];this.currentRoute=a;const s=j[a];s?s(t):window.location.hash="#/squad"}navigate(t){window.location.hash=`#${t}`}getCurrentRoute(){return this.currentRoute}}const d=new W,U=[{id:"squad",label:"Squad",icon:"👥",route:"/squad"},{id:"matches",label:"Matches",icon:"⚽",route:"/matches"},{id:"trainings",label:"Trainings",icon:"🏃",route:"/trainings"},{id:"schedule",label:"Schedule",icon:"📅",route:"/schedule"},{id:"more",label:"More",icon:"☰",route:"/more"}];function q(){const e=document.getElementById("bottom-nav");e.innerHTML=U.map(t=>`
     <button 
       class="bottom-nav__item ${g(t.route)?"bottom-nav__item--active":""}" 
       data-route="${t.route}"
