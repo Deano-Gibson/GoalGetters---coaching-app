@@ -1,0 +1,382 @@
+/* ===================================
+   App Layout Structure
+   =================================== */
+
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* ===================================
+   Main Content Area
+   =================================== */
+
+.app-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 70px;
+    /* Space for bottom navigation */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Desktop: adjust for side navigation */
+@media (min-width: 1024px) {
+    .app-content {
+        padding-bottom: 0;
+        padding-left: 240px;
+        /* Space for side navigation */
+    }
+}
+
+/* ===================================
+   Page Header
+   =================================== */
+
+.page-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-muted);
+    padding: var(--space-3) var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 56px;
+}
+
+.page-header__back {
+    width: var(--touch-target-min);
+    height: var(--touch-target-min);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-fast);
+}
+
+.page-header__back:hover {
+    background-color: var(--surface-hover);
+}
+
+.page-header__title {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    flex: 1;
+    text-align: center;
+    padding: 0 var(--space-2);
+}
+
+.page-header__actions {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.page-header__action {
+    width: var(--touch-target-min);
+    height: var(--touch-target-min);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-fast);
+}
+
+.page-header__action:hover {
+    background-color: var(--surface-hover);
+}
+
+/* ===================================
+   Page Body
+   =================================== */
+
+.page-body {
+    flex: 1;
+    padding: var(--space-4);
+}
+
+/* Desktop: wider padding */
+@media (min-width: 1024px) {
+    .page-body {
+        padding: var(--space-8);
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+/* ===================================
+   Container Utilities
+   =================================== */
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+}
+
+.container--narrow {
+    max-width: 640px;
+}
+
+.container--medium {
+    max-width: 900px;
+}
+
+.container--wide {
+    max-width: 1200px;
+}
+
+/* ===================================
+   Section Utilities
+   =================================== */
+
+.section {
+    margin-bottom: var(--space-8);
+}
+
+.section__header {
+    margin-bottom: var(--space-4);
+}
+
+.section__title {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-1);
+}
+
+.section__subtitle {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+/* ===================================
+   Grid Layouts
+   =================================== */
+
+.grid {
+    display: grid;
+    gap: var(--space-4);
+}
+
+.grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (min-width: 768px) {
+    .grid--tablet-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid--tablet-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid--desktop-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid--desktop-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid--desktop-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ===================================
+   Flex Utilities
+   =================================== */
+
+.flex {
+    display: flex;
+}
+
+.flex--column {
+    flex-direction: column;
+}
+
+.flex--center {
+    align-items: center;
+    justify-content: center;
+}
+
+.flex--between {
+    justify-content: space-between;
+}
+
+.flex--gap-1 {
+    gap: var(--space-1);
+}
+
+.flex--gap-2 {
+    gap: var(--space-2);
+}
+
+.flex--gap-3 {
+    gap: var(--space-3);
+}
+
+.flex--gap-4 {
+    gap: var(--space-4);
+}
+
+/* ===================================
+   Spacing Utilities
+   =================================== */
+
+.mb-1 {
+    margin-bottom: var(--space-1);
+}
+
+.mb-2 {
+    margin-bottom: var(--space-2);
+}
+
+.mb-3 {
+    margin-bottom: var(--space-3);
+}
+
+.mb-4 {
+    margin-bottom: var(--space-4);
+}
+
+.mb-6 {
+    margin-bottom: var(--space-6);
+}
+
+.mb-8 {
+    margin-bottom: var(--space-8);
+}
+
+.mt-1 {
+    margin-top: var(--space-1);
+}
+
+.mt-2 {
+    margin-top: var(--space-2);
+}
+
+.mt-3 {
+    margin-top: var(--space-3);
+}
+
+.mt-4 {
+    margin-top: var(--space-4);
+}
+
+.mt-6 {
+    margin-top: var(--space-6);
+}
+
+.mt-8 {
+    margin-top: var(--space-8);
+}
+
+/* ===================================
+   Text Utilities
+   =================================== */
+
+.text-xs {
+    font-size: var(--text-xs);
+}
+
+.text-sm {
+    font-size: var(--text-sm);
+}
+
+.text-base {
+    font-size: var(--text-base);
+}
+
+.text-lg {
+    font-size: var(--text-lg);
+}
+
+.text-xl {
+    font-size: var(--text-xl);
+}
+
+.text-2xl {
+    font-size: var(--text-2xl);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-primary {
+    color: var(--text-primary);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-tertiary {
+    color: var(--text-tertiary);
+}
+
+.weight-regular {
+    font-weight: var(--weight-regular);
+}
+
+.weight-medium {
+    font-weight: var(--weight-medium);
+}
+
+.weight-semibold {
+    font-weight: var(--weight-semibold);
+}
+
+.weight-bold {
+    font-weight: var(--weight-bold);
+}
+
+/* ===================================
+   Visibility Utilities
+   =================================== */
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 767px) {
+    .hidden-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hidden-tablet {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hidden-desktop {
+        display: none !important;
+    }
+}
